@@ -7,6 +7,7 @@ package com.mycompany.hilos_app_java;
 /**
  *
  * @author danndev
+ * Maven
  */
 public class Hilos_App_Java {
 
