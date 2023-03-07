@@ -4,6 +4,8 @@
  */
 package ContenedoresJFrame;
 
+import Clases.Hilo_Sumar;
+import Panel.PanelHilos;
 import javax.swing.JFrame;
 
 /**
@@ -11,7 +13,7 @@ import javax.swing.JFrame;
  * @author danndev
  */
 public class JFrame_Hilos extends JFrame {
-
+    PanelHilos panelHilos;
     public JFrame_Hilos() {
         this.inicializador();
         this.inicializadorObjetos();
@@ -27,5 +29,8 @@ public class JFrame_Hilos extends JFrame {
     }
 
     private void inicializadorObjetos() {
+        panelHilos = new PanelHilos();
+        this.getContentPane().add(panelHilos);
     }
+
 }
