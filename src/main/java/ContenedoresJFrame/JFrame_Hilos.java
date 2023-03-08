@@ -6,6 +6,8 @@ package ContenedoresJFrame;
 
 import Clases.Hilo_Sumar;
 import Panel.PanelHilos;
+import java.awt.BorderLayout;
+import java.awt.GridLayout;
 import javax.swing.JFrame;
 
 /**
@@ -26,6 +28,7 @@ public class JFrame_Hilos extends JFrame {
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
+        this.setLayout(new GridLayout(2, 2));
     }
 
     private void inicializadorObjetos() {

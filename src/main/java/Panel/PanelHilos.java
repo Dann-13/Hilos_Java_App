@@ -5,6 +5,7 @@
 package Panel;
 
 import Clases.Hilo_Sumar;
+import java.awt.event.ActionEvent;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -33,21 +34,40 @@ public class PanelHilos extends JPanel {
         this.add(LblSuma);
 
         JButton botonInicio = new JButton("Iniciar hilo");
-        botonInicio.setBounds(50, 90, 100, 30);
+        botonInicio.setBounds(50, 90, 150, 30);
         botonInicio.addActionListener(e -> {
             hilo = new Hilo_Sumar(0, 1, LblSuma);
             hilo.start();
         });
         this.add(botonInicio);
 
-        JButton botonDetener = new JButton("Detener hilo");
-        botonDetener.setBounds(50, 50, 100, 30);
-        botonDetener.addActionListener(e -> {
+        JButton botonParar = new JButton("Ṕarar hilo");
+        botonParar.setBounds(50, 50, 100, 30);
+        botonParar.addActionListener(e -> {
             if (hilo != null) {
-                hilo.detener();
+                hilo.pausarHilo();
             }
         });
-        this.add(botonDetener);
+
+        this.add(botonParar);
+        JButton botonContinuar = new JButton("Conyinuar");
+        botonContinuar.setBounds(50, 200, 100, 30);
+        botonContinuar.addActionListener(e -> {
+            if (hilo != null) {
+                hilo.continuarHilo();
+            }
+        });
+
+        this.add(botonContinuar);
+//        
+//        JButton botondetenerse = new JButton("detener hilo");
+//        botondetenerse.setBounds(50, 250, 100, 30);
+//        botondetenerse.addActionListener(e -> {
+//            if (hilo != null) {
+//                hilo.reiniciarSuma();
+//            }
+//        });
+//        this.add(botondetenerse);
     }
 
 }
