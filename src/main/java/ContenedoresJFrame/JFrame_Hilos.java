@@ -5,7 +5,10 @@
 package ContenedoresJFrame;
 
 import Clases.Hilo_Sumar;
-import Panel.PanelHilos;
+import Panel.PanelHiloDividir;
+import Panel.PanelHiloMultiplicar;
+import Panel.PanelHiloRestar;
+import Panel.PanelHiloSumar;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import javax.swing.JFrame;
@@ -15,7 +18,12 @@ import javax.swing.JFrame;
  * @author danndev
  */
 public class JFrame_Hilos extends JFrame {
-    PanelHilos panelHilos;
+
+    PanelHiloSumar panelHilos;
+    PanelHiloRestar panelRestar;
+    PanelHiloMultiplicar panelHiloMultiplicar;
+    PanelHiloDividir panelHiloDividir;
+
     public JFrame_Hilos() {
         this.inicializador();
         this.inicializadorObjetos();
@@ -32,8 +40,18 @@ public class JFrame_Hilos extends JFrame {
     }
 
     private void inicializadorObjetos() {
-        panelHilos = new PanelHilos();
+        panelHilos = new PanelHiloSumar();
         this.getContentPane().add(panelHilos);
+
+        panelRestar = new PanelHiloRestar();
+        this.getContentPane().add(panelRestar);
+
+        panelHiloMultiplicar = new PanelHiloMultiplicar();
+        this.getContentPane().add(panelHiloMultiplicar);
+
+        panelHiloDividir = new PanelHiloDividir();
+        this.getContentPane().add(panelHiloDividir);
+
     }
 
 }
