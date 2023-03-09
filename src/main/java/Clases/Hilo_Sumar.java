@@ -39,7 +39,7 @@ public class Hilo_Sumar extends Thread {
         // Desactivar el botón para evitar múltiples clics
         btnIniciar.setEnabled(false);
         lblres.setEnabled(false);
-
+        System.out.println("Suma" + terminar);
         while (!terminar) {
             // Verificar si se debe pausar el hilo
             synchronized (pauseLock) {
@@ -72,7 +72,7 @@ public class Hilo_Sumar extends Thread {
 
         }
 
-        //SwingUtilities.invokeLater(() -> btnIniciar.setEnabled(true));
+        
     }
 
     public void pausarHilo() {
@@ -88,6 +88,7 @@ public class Hilo_Sumar extends Thread {
 
     public void detenerHilo() {
         terminar = true;
+        SwingUtilities.invokeLater(() -> btnIniciar.setEnabled(true));
         interrupt();
     }
 
@@ -95,6 +96,9 @@ public class Hilo_Sumar extends Thread {
         num1 = 0;
         num2 = 0;
         guardado = 0;
+        SwingUtilities.invokeLater(() -> {
+                lblres.setText("resultado  " + 0);     
+            });
         iniciar = true;
         pausar = false;
         terminar = false;

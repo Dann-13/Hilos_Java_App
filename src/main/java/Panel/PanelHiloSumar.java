@@ -65,7 +65,7 @@ public class PanelHiloSumar extends JPanel {
         this.add(botonContinuar);
 //        
         JButton botonTerminar= new JButton("detener hilo");
-        botonTerminar.setBounds(50, 200, 100, 30);
+        botonTerminar.setBounds(120, 220, 150, 30);
         botonTerminar.addActionListener(e -> {
             if (hilo != null) {
                 hilo.detenerHilo();
