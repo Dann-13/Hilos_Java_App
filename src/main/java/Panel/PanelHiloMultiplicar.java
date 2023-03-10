@@ -7,12 +7,14 @@ package Panel;
 import Clases.Hilo_Multiplicar;
 import Clases.Hilo_Restar;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.border.MatteBorder;
 
 /**
  *
@@ -35,9 +37,11 @@ public class PanelHiloMultiplicar extends JPanel {
 
     private void inicializadorObjetos() {
         LblMUltiplicar = new JLabel("La multiplicacion es");
-        LblMUltiplicar.setBounds(100, 20, 250, 30);
+        LblMUltiplicar.setBounds(90, 20, 250, 30);
         LblMUltiplicar.setHorizontalAlignment(JLabel.CENTER);
         LblMUltiplicar.setForeground(Color.BLACK);
+        Font font = new Font("Arial", Font.PLAIN, 18);
+        LblMUltiplicar.setFont(font);
         this.add(LblMUltiplicar);
 
         JButton botonInicio = new JButton("Iniciar hilo");
@@ -46,26 +50,9 @@ public class PanelHiloMultiplicar extends JPanel {
             hilo = new Hilo_Multiplicar(1, 2, LblMUltiplicar, botonInicio);
             hilo.start();
         });
-        // Añadir un efecto de sombra
-        botonInicio.setFocusPainted(false);
-        botonInicio.setContentAreaFilled(false);
-        botonInicio.setOpaque(true);
-        botonInicio.setBorderPainted(false);
-        botonInicio.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseEntered(MouseEvent e) {
-                botonInicio.setBackground(new Color(30, 144, 255));
-                botonInicio.setBorder(BorderFactory.createLineBorder(Color.WHITE, 2));
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-                botonInicio.setBackground(new Color(0, 128, 255));
-                botonInicio.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
-            }
-        });
+        propiedadesBotones(botonInicio);
         this.add(botonInicio);
-        
+
         JButton botonParar = new JButton("Ṕarar hilo");
         botonParar.setBounds(120, 120, 150, 30);
         botonParar.addActionListener(e -> {
@@ -74,7 +61,7 @@ public class PanelHiloMultiplicar extends JPanel {
 
             }
         });
-
+        propiedadesBotones(botonParar);
         this.add(botonParar);
         JButton botonContinuar = new JButton("Cotinuar");
         botonContinuar.setBounds(120, 170, 150, 30);
@@ -83,7 +70,7 @@ public class PanelHiloMultiplicar extends JPanel {
                 hilo.continuarHilo();
             }
         });
-
+        propiedadesBotones(botonContinuar);
         this.add(botonContinuar);
 //        
         JButton botonTerminar = new JButton("detener hilo");
@@ -95,8 +82,35 @@ public class PanelHiloMultiplicar extends JPanel {
 
             }
         });
+        propiedadesBotones(botonTerminar);
         this.add(botonTerminar);
 
+    }
+
+    public static void propiedadesBotones(JButton btn) {
+        btn.setFocusPainted(false);
+        btn.setContentAreaFilled(false);
+        btn.setOpaque(true);
+        MatteBorder border = new MatteBorder(0, 0, 1, 0, Color.BLACK);
+        btn.setBorder(border);
+        btn.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                btn.setBackground(new Color(30, 144, 255));
+                MatteBorder border = new MatteBorder(0, 0, 1, 0, new Color(30, 144, 255));
+                btn.setBorder(border);
+                btn.setForeground(Color.WHITE);
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                btn.setBackground(new Color(30, 144, 255));
+                MatteBorder border = new MatteBorder(0, 0, 1, 0, Color.BLACK);
+                btn.setBorder(border);
+                btn.setBackground(Color.white);
+                btn.setForeground(Color.BLACK);
+            }
+        });
     }
 
 }

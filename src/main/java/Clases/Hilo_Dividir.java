@@ -56,7 +56,7 @@ public class Hilo_Dividir extends Thread{
             System.out.println("La Division de " + num1 + " y " + num2 + " es: " + resultado);
             SwingUtilities.invokeLater(() -> {
                 lblres.setText("resultado  " + resultado);
-                lblres.setForeground(Color.red);
+                lblres.setForeground(Color.GREEN);
 
             });
             num1 = resultado;

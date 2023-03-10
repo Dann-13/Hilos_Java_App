@@ -6,10 +6,15 @@ package Panel;
 
 import Clases.Hilo_Sumar;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.border.MatteBorder;
 
 /**
  *
@@ -27,7 +32,7 @@ public class PanelHiloSumar extends JPanel {
 
     private void inicializador() {
         this.setLayout(null);
-        this.setBackground(Color.red);
+        this.setBackground(Color.white);
     }
 
     private void inicializadorObjetos() {
@@ -35,6 +40,8 @@ public class PanelHiloSumar extends JPanel {
         LblSuma.setBounds(120, 20, 150, 30);
         LblSuma.setHorizontalAlignment(JLabel.CENTER);
         LblSuma.setForeground(Color.BLACK);
+        Font font = new Font("Arial", Font.PLAIN, 18);
+        LblSuma.setFont(font);
         this.add(LblSuma);
 
         JButton botonInicio = new JButton("Iniciar hilo");
@@ -43,6 +50,7 @@ public class PanelHiloSumar extends JPanel {
             hilo = new Hilo_Sumar(0, 1, LblSuma, botonInicio);
             hilo.start();
         });
+        propiedadesBotones(botonInicio);
         this.add(botonInicio);
 
         JButton botonParar = new JButton("Ṕarar hilo");
@@ -52,7 +60,7 @@ public class PanelHiloSumar extends JPanel {
                 hilo.pausarHilo();
             }
         });
-
+        propiedadesBotones(botonParar);
         this.add(botonParar);
         JButton botonContinuar = new JButton("Cotinuar");
         botonContinuar.setBounds(120, 170, 150, 30);
@@ -61,10 +69,10 @@ public class PanelHiloSumar extends JPanel {
                 hilo.continuarHilo();
             }
         });
-
+        propiedadesBotones(botonContinuar);
         this.add(botonContinuar);
-//        
-        JButton botonTerminar= new JButton("detener hilo");
+//      
+        JButton botonTerminar = new JButton("detener hilo");
         botonTerminar.setBounds(120, 220, 150, 30);
         botonTerminar.addActionListener(e -> {
             if (hilo != null) {
@@ -72,7 +80,35 @@ public class PanelHiloSumar extends JPanel {
                 hilo.reiniciar();
             }
         });
+        propiedadesBotones(botonTerminar);
         this.add(botonTerminar);
+
+    }
+
+    public static void propiedadesBotones(JButton btn) {
+        btn.setFocusPainted(false);
+        btn.setContentAreaFilled(false);
+        btn.setOpaque(true);
+        MatteBorder border = new MatteBorder(0, 0, 1, 0, Color.BLACK);
+        btn.setBorder(border);
+        btn.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                btn.setBackground(new Color(30, 144, 255));
+                MatteBorder border = new MatteBorder(0, 0, 1, 0, new Color(30, 144, 255));
+                btn.setBorder(border);
+                btn.setForeground(Color.WHITE);
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                btn.setBackground(new Color(30, 144, 255));
+                MatteBorder border = new MatteBorder(0, 0, 1, 0, Color.BLACK);
+                btn.setBorder(border);
+                btn.setBackground(Color.white);
+                btn.setForeground(Color.BLACK);
+            }
+        });
     }
 
 }
